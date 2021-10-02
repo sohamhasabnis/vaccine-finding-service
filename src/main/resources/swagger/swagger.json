@@ -1,0 +1,211 @@
+{
+  "swagger": "2.0",
+  "host": "www.hots.com",
+  "info": {
+    "version": "1.0.0",
+    "title": "vaccine-finder"
+  },
+  "schemes": [
+    "https"
+  ],
+  "basePath": "/",
+  "paths": {
+    "/findVaccine": {
+      "get": {
+        "summary": "Endpoint",
+        "operationId": "findVaccine",
+        "tags": [
+          "vaccine"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "district",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/sessions"
+            }
+          },
+          "400": {
+            "description": "error",
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "sessions": {
+      "type": "object",
+      "properties": {
+        "sessions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/session"
+          }
+        }
+      }
+    },
+    "session": {
+      "type": "object",
+      "properties": {
+        "center_id": {
+          "type": "number"
+        },
+        "name": {
+          "type": "string"
+        },
+        "name_1": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string"
+        },
+        "address_1": {
+          "type": "string"
+        },
+        "state_name": {
+          "type": "string"
+        },
+        "state_name_1": {
+          "type": "string"
+        },
+        "district_name": {
+          "type": "string"
+        },
+        "district_name_1": {
+          "type": "string"
+        },
+        "block_name": {
+          "type": "string"
+        },
+        "block_name_1": {
+          "type": "string"
+        },
+        "pincode": {
+          "type": "string"
+        },
+        "lat": {
+          "type": "number",
+          "format": "float",
+          "minimum": 8.06,
+          "maximum": 37.1
+        },
+        "long": {
+          "type": "number",
+          "format": "float",
+          "minimum": 68.11,
+          "maximum": 97.41
+        },
+        "from": {
+          "type": "string",
+          "format": "partial-time"
+        },
+        "to": {
+          "type": "string",
+          "format": "partial-time"
+        },
+        "fee_type": {
+          "type": "string",
+          "enum": [
+            "Free",
+            "Paid"
+          ]
+        },
+        "fee": {
+          "type": "string"
+        },
+        "session_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "date": {
+          "type": "string"
+        },
+        "available_capacity": {
+          "type": "number"
+        },
+        "available_capacity_dose1": {
+          "type": "number"
+        },
+        "available_capacity_dose2": {
+          "type": "number"
+        },
+        "walkin_ind": {
+          "type": "string",
+          "enum": [
+            "Y",
+            "N"
+          ]
+        },
+        "min_age_limit": {
+          "type": "number"
+        },
+        "vaccine": {
+          "type": "string"
+        },
+        "slots": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "centerResponse": {
+      "type": "object",
+      "properties": {
+        "centerName": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string"
+        },
+        "pincode": {
+          "type": "string"
+        },
+        "capacity": {
+          "type": "integer"
+        },
+        "slots": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "district_name": {
+          "type": "string"
+        },
+        "total_doses": {
+          "type":"integer"
+        },
+        "dateForDose": {
+          "type": "string"
+        },
+        "typeOfVaccine": {
+          "type": "string"
+        },
+        "age": {
+          "type": "integer"
+        },
+        "totalSecondDoses": {
+          "type": "integer"
+        },
+        "fee": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
